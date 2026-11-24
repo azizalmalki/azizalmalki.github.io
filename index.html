@@ -164,7 +164,7 @@ footer h2{margin:0;font-size:clamp(32px,8vw,64px);line-height:1.3}
       <figure style="margin:0"><div class="shot"><img src="img/portrait-oud.jpg" alt="" loading="lazy"></div><figcaption class="cap"><b>في الاستوديو</b><span>تقديم</span></figcaption></figure>
       <figure style="margin:0"><div class="shot"><img src="img/scene-night.jpg" alt="" loading="lazy"></div><figcaption class="cap"><b>ليل البادية</b><span>لمردة</span></figcaption></figure>
       <figure style="margin:0"><div class="shot"><img src="img/scene-elder.jpg" alt="" loading="lazy"></div><figcaption class="cap"><b>وجوه الحكاية</b><span>لمردة</span></figcaption></figure>
-    </div>
+    <div class="add" style="aspect-ratio:4/5"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>مكان لصورة جديدة</div></div>
     <div class="dots" id="dots"></div>
   </div>
 </section>
@@ -281,7 +281,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 // نقاط عرض الصور
 const strip = document.getElementById('strip'), dots = document.getElementById('dots');
-[...strip.children].forEach(() => dots.appendChild(document.createElement('i')));
+[...strip.children].filter(c => !c.classList.contains('add')).forEach(() => dots.appendChild(document.createElement('i')));
 const mark = () => { const w = strip.children[0].offsetWidth + 12; const i = Math.round(Math.abs(strip.scrollLeft) / w); [...dots.children].forEach((d, k) => d.classList.toggle('on', k === i)); };
 strip.addEventListener('scroll', mark, { passive: true }); mark();
 
