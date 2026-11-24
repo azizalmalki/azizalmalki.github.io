@@ -22,7 +22,7 @@ a{color:#C9B8A4;font-size:14px}
 <a href="./">رجوع للموقع</a>
 <script>
 const API='https://abacus.jasoncameron.dev/get/azizalmalki-site/';
-['visits','likes'].forEach((k,i)=>fetch(API+k).then(r=>r.json()).then(d=>document.getElementById(i?'l':'v').textContent=Number(d.value||0).toLocaleString('ar')).catch(()=>document.getElementById(i?'l':'v').textContent='0'));
+['visits','likes'].forEach((k,i)=>fetch(API+k,{cache:'no-store'}).then(r=>r.json()).then(d=>document.getElementById(i?'l':'v').textContent=Number(d.value||0).toLocaleString('ar')).catch(()=>document.getElementById(i?'l':'v').textContent='0'));
 </script>
 </body>
 </html>
