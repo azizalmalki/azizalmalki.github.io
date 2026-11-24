@@ -164,7 +164,7 @@ footer h2{margin:0;font-size:clamp(32px,8vw,64px);line-height:1.3}
       <figure style="margin:0"><div class="shot"><img src="img/portrait-oud.jpg" alt="" loading="lazy"></div><figcaption class="cap"><b>في الاستوديو</b><span>تقديم</span></figcaption></figure>
       <figure style="margin:0"><div class="shot"><img src="img/scene-night.jpg" alt="" loading="lazy"></div><figcaption class="cap"><b>ليل البادية</b><span>لمردة</span></figcaption></figure>
       <figure style="margin:0"><div class="shot"><img src="img/scene-elder.jpg" alt="" loading="lazy"></div><figcaption class="cap"><b>وجوه الحكاية</b><span>لمردة</span></figcaption></figure>
-    <div class="add" style="aspect-ratio:4/5"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>مكان لصورة جديدة</div></div>
+    <div class="add" style="aspect-ratio:4/5"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg>مكان لصورة جديدة</div></div>
     <div class="dots" id="dots"></div>
   </div>
 </section>
@@ -177,7 +177,7 @@ footer h2{margin:0;font-size:clamp(32px,8vw,64px);line-height:1.3}
       <div class="row"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"></rect><path d="M8 3l4 3 4-3"></path></svg><div class="t"><b>أوتاد الخيام</b><span>برنامج تراثي · التلفزيون</span></div><em>2026</em></div>
       <div class="row"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"></rect><path d="M8 3l4 3 4-3"></path></svg><div class="t"><b>حديث الشارع</b><span>برنامج اجتماعي · التلفزيون</span></div><em>2026</em></div>
       <div class="row"><svg class="ico" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3"></path></svg><div class="t"><b>لمردة</b><span>برنامج أسبوعي · تأسيس وتقديم</span></div><em>قبل 2026</em></div>
-      <div class="add add-row" style="min-height:0;padding:18px;margin-top:12px;cursor:pointer"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>إضافة عمل جديد</div>
+      <div class="add add-row" style="min-height:0;padding:18px;margin-top:12px;cursor:pointer"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg>إضافة عمل جديد</div>
     </div>
   </div>
 </section>
@@ -212,7 +212,7 @@ footer h2{margin:0;font-size:clamp(32px,8vw,64px);line-height:1.3}
 <!-- عنّي -->
 <section id="about">
   <div class="wrap about reveal">
-    <p>بدأت التقديم وصناعة المحتوى من 2022، ثم في التلفزيون. اليوم أشتغل على الهجن وأهلها في صحاري. أقدّم وأكتب وأصوّر وأحرّر.</p>
+    <p>بدأت التقديم وصناعة المحتوى من 2022، ثم في التلفزيون. اليوم أشتغل عالم الهجن. أقدّم وأكتب وأصوّر وأحرّر.</p>
     <div class="tl">
       <div><span>صحاري، قطر</span><span>2026</span></div>
       <div><span>التلفزيون</span><span>2026</span></div>
@@ -297,6 +297,7 @@ const lb = document.getElementById('lb');
 document.querySelectorAll('.gal button').forEach(b => b.addEventListener('click', () => { lb.querySelector('img').src = b.dataset.src; lb.classList.add('on'); }));
 lb.addEventListener('click', () => lb.classList.remove('on'));
 </script>
+
 
 
 
