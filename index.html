@@ -242,7 +242,7 @@ footer h2{margin:0;font-size:clamp(32px,8vw,64px);line-height:1.3}
 const API = 'https://abacus.jasoncameron.dev', NS = 'azizalmalki-site';
 const setV = v => document.querySelectorAll('.v-count').forEach(e => e.textContent = Number(v).toLocaleString('ar'));
 const seen = (() => { try { return sessionStorage.getItem('seen'); } catch (e) { return 1; } })();
-fetch(`${API}/${seen ? 'get' : 'hit'}/${NS}/visits`).then(r => r.json()).then(d => {
+fetch(`${API}/${seen ? 'get' : 'hit'}/${NS}/visits`, { cache: 'no-store' }).then(r => r.json()).then(d => {
   if (d.value != null) setV(d.value);
   try { sessionStorage.setItem('seen', 1); } catch (e) {}
 }).catch(() => {});
@@ -250,13 +250,13 @@ const likeBtn = document.getElementById('like'), likeCount = document.getElement
 let liked = false; try { liked = localStorage.getItem('liked') === '1'; } catch (e) {}
 const showLikes = v => likeCount.textContent = v ? '· ' + Number(v).toLocaleString('ar') : '';
 if (liked) { likeBtn.classList.add('done'); document.getElementById('like-label').textContent = 'شكراً لك'; }
-fetch(`${API}/get/${NS}/likes`).then(r => r.json()).then(d => showLikes(d.value || 0)).catch(() => {});
+fetch(`${API}/get/${NS}/likes`, { cache: 'no-store' }).then(r => r.json()).then(d => showLikes(d.value || 0)).catch(() => {});
 likeBtn.addEventListener('click', () => {
   if (liked) return;
   liked = true; likeBtn.classList.add('done');
   document.getElementById('like-label').textContent = 'شكراً لك';
   try { localStorage.setItem('liked', '1'); } catch (e) {}
-  fetch(`${API}/hit/${NS}/likes`).then(r => r.json()).then(d => showLikes(d.value)).catch(() => {});
+  fetch(`${API}/hit/${NS}/likes`, { cache: 'no-store' }).then(r => r.json()).then(d => showLikes(d.value)).catch(() => {});
 });
 
 // الشريط العلوي
