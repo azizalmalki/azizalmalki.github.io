@@ -203,7 +203,8 @@ $('#file').onchange=e=>{
   const f=e.target.files[0]; if(!f||!sel)return;
   const isV=f.type.startsWith('video'); let el;
   const mk=()=>{const m=doc.createElement(isV?'video':'img');if(isV){m.setAttribute('controls','');m.setAttribute('playsinline','');}m.style.cssText='width:100%;height:100%;object-fit:cover';return m;};
-  if(sel.matches('.add')){const b=doc.createElement('button');b.setAttribute('data-src','');const sh=doc.createElement('div');sh.className='shot';el=mk();sh.appendChild(el);b.appendChild(sh);sel.before(b);}
+  if(sel.matches('.add')&&sel.closest('.strip')){const fg=doc.createElement('figure');fg.style.margin='0';const sh=doc.createElement('div');sh.className='shot';el=mk();sh.appendChild(el);const cp=doc.createElement('figcaption');cp.className='cap';cp.innerHTML='<b>عنوان الصورة</b><span>وصف قصير</span>';fg.append(sh,cp);sel.before(fg);}
+  else if(sel.matches('.add')){const b=doc.createElement('button');b.setAttribute('data-src','');const sh=doc.createElement('div');sh.className='shot';el=mk();sh.appendChild(el);b.appendChild(sh);sel.before(b);}
   else{const emp=sel.matches('.vid.empty')?sel:sel.querySelector('.vid.empty');if(emp){const card=emp.closest('.strip>div')||emp;const nc=card.cloneNode(true);nc.classList.remove('__sel');const ne=nc.matches('.vid.empty')?nc:nc.querySelector('.vid.empty');ne.className='vid';ne.textContent='';el=mk();ne.appendChild(el);card.before(nc);}else el=sel.matches('img,video')?sel:sel.querySelector(isV?'video':'img')||sel.querySelector('img,video');}
   if(!el){alert('ما فيه صورة أو فيديو في هذا العنصر');return;}
   if(f.size>40*1024*1024){alert('الملف أكبر من 40 ميجا، صغّره أول');return;}
