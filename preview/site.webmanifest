@@ -1,0 +1,21 @@
+{
+ "name": "عزيز المالكي — Aziz Almalki",
+ "short_name": "عزيز المالكي",
+ "icons": [
+  {
+   "src": "apple-touch-icon.png",
+   "sizes": "180x180",
+   "type": "image/png"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ],
+ "theme_color": "#141414",
+ "background_color": "#141414",
+ "display": "browser",
+ "lang": "ar",
+ "dir": "rtl"
+}
