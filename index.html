@@ -260,9 +260,9 @@ likeBtn.addEventListener('click', () => {
 });
 
 // الشريط العلوي
-const top = document.getElementById('top');
+const bar = document.getElementById('top');
 const waf = document.getElementById('waf');
-const onS = () => { const s = scrollY > innerHeight * 0.7; top.classList.toggle('solid', s); waf.classList.toggle('on', s); };
+const onS = () => { const s = scrollY > innerHeight * 0.7; bar.classList.toggle('solid', s); waf.classList.toggle('on', s); };
 addEventListener('scroll', onS, { passive: true }); onS();
 
 // ظهور الأقسام بهدوء
