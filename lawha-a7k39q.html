@@ -66,7 +66,7 @@ iframe.phone{width:390px;height:844px;flex:none}
 
   <div class="box">
     <h3>الكتابة</h3>
-    <div class="hint">اضغط على أي كلمة أو عنوان في الموقع واكتب عليه مباشرة. للتراجع: ⌘ + Z<br>لإضافة صورة جديدة: اضغط على مربع «مكان لصورك» ثم زر «إضافة صورة».<br>بعد أي تعديل لا تنسى زر «نشر».</div>
+    <div class="hint">اضغط على أي كلمة أو عنوان في الموقع واكتب عليه مباشرة. للتراجع: ⌘ + Z<br>لإضافة صورة جديدة: اضغط على مربع «مكان لصورك» ثم زر «إضافة صورة».<br>لإضافة عمل جديد: اضغط «+ إضافة عمل جديد» تحت قائمة الأعمال.<br>بعد أي تعديل لا تنسى زر «نشر».</div>
   </div>
 
   <div class="box" id="selBox">
@@ -181,6 +181,8 @@ async function load(){
 // تحديد العناصر
 const BLOCKS='figure,.row,.strip>div,.gal>*,.tl>div,.links>a,a.wa,.like,.meta>span,.about>p,.cap,.head,h1,h2,.hero p,section,footer';
 function pick(t){
+  const ar=t.closest&&t.closest('.add-row');
+  if(ar){const src=ar.parentElement.querySelector('.row');if(src){const r=src.cloneNode(true);r.classList.remove('__sel');const b=r.querySelector('b');if(b)b.textContent='اسم العمل الجديد';const sp=r.querySelector('.t span');if(sp)sp.textContent='نوع العمل · الجهة';const em=r.querySelector('em');if(em)em.textContent=String(new Date().getFullYear());ar.before(r);t=b||r;status('انضاف عمل جديد. اضغط على اسمه واكتب، ثم اضغط نشر.');}}
   if(sel) sel.classList.remove('__sel');
   sel=t.closest(BLOCKS)||t;
   sel.classList.add('__sel');
