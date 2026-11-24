@@ -66,7 +66,7 @@ iframe.phone{width:390px;height:844px;flex:none}
 
   <div class="box">
     <h3>الكتابة</h3>
-    <div class="hint">اضغط على أي كلمة أو عنوان في الموقع واكتب عليه مباشرة. للتراجع: ⌘ + Z</div>
+    <div class="hint">اضغط على أي كلمة أو عنوان في الموقع واكتب عليه مباشرة. للتراجع: ⌘ + Z<br>لإضافة صورة جديدة: اضغط على مربع «مكان لصورك» ثم زر «إضافة صورة».<br>بعد أي تعديل لا تنسى زر «نشر».</div>
   </div>
 
   <div class="box" id="selBox">
@@ -79,7 +79,7 @@ iframe.phone{width:390px;height:844px;flex:none}
       <button class="btn" id="dup">نسخ وإضافة</button>
       <button class="btn red" id="del">حذف</button>
     </div>
-    <button class="btn" id="img">تغيير الصورة / الفيديو</button>
+    <button class="btn" id="img">إضافة / تغيير صورة أو فيديو</button>
     <label class="f" id="linkWrap">الرابط<input id="link" placeholder="https://"></label>
     <input type="file" id="file" accept="image/*,video/mp4" hidden>
   </div>
@@ -176,7 +176,7 @@ function pick(t){
   const a=sel.matches('a')?sel:sel.querySelector('a');
   $('#linkWrap').style.display=a?'block':'none';
   if(a) $('#link').value=a.getAttribute('href')||'';
-  $('#img').style.display=(sel.querySelector('img,video')||sel.matches('img,video'))?'flex':'none';
+  $('#img').style.display=(sel.querySelector('img,video,.vid.empty')||sel.matches('img,video,.add,.vid.empty'))?'flex':'none';
 }
 $('#link').addEventListener('input',e=>{const a=sel&&(sel.matches('a')?sel:sel.querySelector('a'));if(a)a.setAttribute('href',e.target.value);});
 $('#del').onclick=()=>{if(!sel)return;if(confirm('تحذف هذا العنصر؟ (تقدر ترجعه بإلغاء التعديلات قبل النشر)')){sel.remove();sel=null;$('#selName').textContent='لا شيء';}};
@@ -188,7 +188,10 @@ $('#down').onclick=()=>{if(sel&&sel.nextElementSibling)sel.nextElementSibling.af
 $('#img').onclick=()=>$('#file').click();
 $('#file').onchange=e=>{
   const f=e.target.files[0]; if(!f||!sel)return;
-  const isV=f.type.startsWith('video'); const el=sel.matches('img,video')?sel:sel.querySelector(isV?'video':'img')||sel.querySelector('img,video');
+  const isV=f.type.startsWith('video'); let el;
+  const mk=()=>{const m=doc.createElement(isV?'video':'img');if(isV){m.setAttribute('controls','');m.setAttribute('playsinline','');}m.style.cssText='width:100%;height:100%;object-fit:cover';return m;};
+  if(sel.matches('.add')){const b=doc.createElement('button');b.setAttribute('data-src','');const sh=doc.createElement('div');sh.className='shot';el=mk();sh.appendChild(el);b.appendChild(sh);sel.before(b);}
+  else{const emp=sel.matches('.vid.empty')?sel:sel.querySelector('.vid.empty');if(emp){emp.className='vid';emp.textContent='';el=mk();emp.appendChild(el);}else el=sel.matches('img,video')?sel:sel.querySelector(isV?'video':'img')||sel.querySelector('img,video');}
   if(!el){alert('ما فيه صورة أو فيديو في هذا العنصر');return;}
   if(f.size>40*1024*1024){alert('الملف أكبر من 40 ميجا، صغّره أول');return;}
   const ext=(f.name.split('.').pop()||'jpg').toLowerCase().replace(/[^a-z0-9]/g,'');
