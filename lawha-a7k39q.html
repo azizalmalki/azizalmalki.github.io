@@ -4,25 +4,261 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>إحصائيات الموقع</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@700&family=IBM+Plex+Sans+Arabic:wght@400;500&display=swap">
+<title>لوحة تحكم موقع عزيز</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
 <style>
-body{margin:0;min-height:100svh;background:#1F1812;color:#FBF7F0;font-family:'IBM Plex Sans Arabic',sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;box-sizing:border-box}
-h1{margin:0 0 10px;font:700 26px 'Noto Naskh Arabic',serif;color:#C99A4B}
-.card{width:100%;max-width:360px;padding:26px;border:1px solid rgba(201,184,164,.3);border-radius:14px;text-align:center}
-.card b{display:block;font:700 56px 'Noto Naskh Arabic',serif;line-height:1.3}
-.card span{color:#C9B8A4;font-size:15px}
-a{color:#C9B8A4;font-size:14px}
+:root{--sand:#F4EDE2;--line:#E2D6C4;--ink:#3B2A1E;--muted:#6E5A49;--gold:#B8893C;--night:#1F1812}
+*{box-sizing:border-box}
+body{margin:0;height:100vh;display:flex;background:#E9E0D2;color:var(--ink);font:14px/1.6 'IBM Plex Sans Arabic',sans-serif;overflow:hidden}
+button,input,select{font:inherit}
+.side{width:320px;flex:none;height:100vh;overflow:auto;background:var(--night);color:#FBF7F0;padding:22px 20px 40px}
+.side h1{margin:0;font:700 22px 'Noto Naskh Arabic',serif;color:#C99A4B}
+.side .sub{color:#C9B8A4;font-size:12px;margin-bottom:18px}
+.box{border:1px solid rgba(201,184,164,.25);border-radius:12px;padding:14px;margin-top:14px}
+.box h3{margin:0 0 10px;font-size:13px;font-weight:600;color:#C9B8A4}
+.nums{display:flex;gap:10px}
+.nums div{flex:1;text-align:center;background:rgba(251,247,240,.06);border-radius:10px;padding:10px 4px}
+.nums b{display:block;font:700 28px 'Noto Naskh Arabic',serif}
+.nums span{font-size:12px;color:#C9B8A4}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px 14px;margin-top:8px;border:1px solid rgba(201,184,164,.35);border-radius:10px;background:none;color:#FBF7F0;cursor:pointer}
+.btn:hover{border-color:#C99A4B}
+.btn.main{background:#C99A4B;border-color:#C99A4B;color:#1F1812;font-weight:600;font-size:15px}
+.btn.red{color:#F2B8A8;border-color:rgba(242,184,168,.4)}
+.btn[disabled]{opacity:.4;cursor:default}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.row2 .btn{margin-top:0}
+.color{display:flex;align-items:center;justify-content:space-between;padding:6px 0}
+.color input{width:44px;height:30px;border:0;padding:0;background:none;cursor:pointer}
+label.f{display:block;margin-top:8px;font-size:12px;color:#C9B8A4}
+label.f input{display:block;width:100%;margin-top:4px;padding:9px 10px;border-radius:8px;border:1px solid rgba(201,184,164,.35);background:rgba(251,247,240,.06);color:#FBF7F0;direction:ltr}
+.hint{font-size:12px;color:#C9B8A4;line-height:1.8}
+.status{margin-top:10px;font-size:13px;min-height:22px;color:#E0B56A}
+.main{flex:1;display:flex;flex-direction:column;min-width:0}
+.bar{display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--sand);border-bottom:1px solid var(--line)}
+.bar .seg{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.bar .seg button{border:0;background:none;padding:7px 14px;cursor:pointer;color:var(--muted)}
+.bar .seg button.on{background:var(--ink);color:#FBF7F0}
+.bar .tip{margin-inline-start:auto;font-size:12px;color:var(--muted)}
+.stage{flex:1;overflow:auto;display:flex;justify-content:center;padding:18px}
+iframe{border:0;background:#fff;width:100%;height:100%;border-radius:10px;box-shadow:0 8px 30px rgba(31,24,18,.15);transition:width .35s}
+iframe.phone{width:390px;height:844px;flex:none}
+.setup{position:fixed;inset:0;z-index:9;background:rgba(31,24,18,.92);display:none;align-items:center;justify-content:center;padding:20px}
+.setup.on{display:flex}
+.setup .card{max-width:520px;background:var(--sand);color:var(--ink);border-radius:16px;padding:28px}
+.setup h2{margin:0 0 8px;font:700 24px 'Noto Naskh Arabic',serif}
+.setup ol{padding-inline-start:20px;line-height:2}
+.setup input{width:100%;padding:11px;border-radius:10px;border:1px solid var(--line);direction:ltr;margin-top:6px}
+.setup .btn{color:var(--ink);border-color:var(--line)}
+.setup .btn.main{color:#1F1812}
+.setup a{color:#8A6224;font-weight:600}
 </style>
 </head>
 <body>
-<h1>إحصائيات موقعك</h1>
-<div class="card"><b id="v">…</b><span>زيارة</span></div>
-<div class="card"><b id="l">…</b><span>إعجاب</span></div>
-<a href="./">رجوع للموقع</a>
+
+<aside class="side">
+  <h1>لوحة تحكم موقعي</h1>
+  <div class="sub">azizalmalki.github.io</div>
+
+  <div class="box">
+    <h3>الأرقام (لك أنت بس)</h3>
+    <div class="nums"><div><b id="nv">…</b><span>زيارة</span></div><div><b id="nl">…</b><span>إعجاب</span></div></div>
+  </div>
+
+  <div class="box">
+    <h3>الكتابة</h3>
+    <div class="hint">اضغط على أي كلمة أو عنوان في الموقع واكتب عليه مباشرة. للتراجع: ⌘ + Z</div>
+  </div>
+
+  <div class="box" id="selBox">
+    <h3>العنصر المحدد: <span id="selName">لا شيء</span></h3>
+    <div class="row2">
+      <button class="btn" id="up">↑ لفوق</button>
+      <button class="btn" id="down">↓ لتحت</button>
+    </div>
+    <div class="row2" style="margin-top:8px">
+      <button class="btn" id="dup">نسخ وإضافة</button>
+      <button class="btn red" id="del">حذف</button>
+    </div>
+    <button class="btn" id="img">تغيير الصورة / الفيديو</button>
+    <label class="f" id="linkWrap">الرابط<input id="link" placeholder="https://"></label>
+    <input type="file" id="file" accept="image/*,video/mp4" hidden>
+  </div>
+
+  <div class="box">
+    <h3>الألوان</h3>
+    <div id="colors"></div>
+  </div>
+
+  <div class="box">
+    <button class="btn main" id="save">نشر التعديلات على الموقع</button>
+    <div class="status" id="status"></div>
+    <button class="btn" id="open">فتح الموقع</button>
+    <button class="btn" id="reload">إلغاء التعديلات وإعادة التحميل</button>
+  </div>
+
+  <div class="box">
+    <button class="btn" id="logout" style="font-size:12px">تغيير مفتاح الربط</button>
+  </div>
+</aside>
+
+<main class="main">
+  <div class="bar">
+    <div class="seg"><button id="vDesk" class="on">لابتوب</button><button id="vPhone">جوال</button></div>
+    <span class="tip">التعديل هنا ما يظهر للناس إلا بعد ما تضغط «نشر»</span>
+  </div>
+  <div class="stage"><iframe id="fr" sandbox="allow-same-origin"></iframe></div>
+</main>
+
+<div class="setup" id="setup"><div class="card">
+  <h2>ربط اللوحة بموقعك (مرة وحدة بس)</h2>
+  <ol>
+    <li>افتح <a href="https://github.com/settings/personal-access-tokens/new" target="_blank">صفحة إنشاء المفتاح في GitHub</a></li>
+    <li><b>Token name:</b> اكتب: لوحة الموقع</li>
+    <li><b>Expiration:</b> اختر أطول مدة متاحة</li>
+    <li><b>Repository access:</b> اختر Only select repositories ثم azizalmalki.github.io</li>
+    <li><b>Permissions:</b> عند <b>Contents</b> اختر <b>Read and write</b></li>
+    <li>اضغط <b>Generate token</b> وانسخ المفتاح، والصقه هنا:</li>
+  </ol>
+  <input id="tok" placeholder="github_pat_...">
+  <button class="btn main" id="tokSave" style="margin-top:12px">ربط</button>
+  <p class="hint" style="color:#6E5A49">المفتاح ينحفظ في هذا المتصفح على لابتوبك بس، ولا ينرسل لأي مكان غير GitHub.</p>
+</div></div>
+
 <script>
-const API='https://abacus.jasoncameron.dev/get/azizalmalki-site/';
-['visits','likes'].forEach((k,i)=>fetch(API+k,{cache:'no-store'}).then(r=>r.json()).then(d=>document.getElementById(i?'l':'v').textContent=Number(d.value||0).toLocaleString('ar')).catch(()=>document.getElementById(i?'l':'v').textContent='0'));
+const OWNER='azizalmalki', REPO='azizalmalki.github.io', SITE='https://azizalmalki.github.io/';
+const $=s=>document.querySelector(s);
+let token=localStorage.getItem('gh_token')||'', sha=null, doc=null, sel=null, pending=[], colors={};
+const COLOR_NAMES={'--sand':'الخلفية','--ink':'لون الكتابة','--muted':'الكتابة الثانوية','--gold':'الذهبي','--night':'الأقسام الداكنة','--line':'الخطوط الفاصلة'};
+const status=t=>$('#status').textContent=t;
+
+async function api(path,opt={}){
+  const r=await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`,{...opt,cache:'no-store',headers:{Authorization:`Bearer ${token}`,Accept:'application/vnd.github+json',...(opt.headers||{})}});
+  if(!r.ok) throw new Error(r.status+' '+(await r.text()).slice(0,120));
+  return r.json();
+}
+const b64dec=s=>new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\n/g,'')),c=>c.charCodeAt(0)));
+const b64enc=str=>{const b=new TextEncoder().encode(str);let s='';for(let i=0;i<b.length;i+=0x8000)s+=String.fromCharCode.apply(null,b.subarray(i,i+0x8000));return btoa(s);};
+
+// الأرقام
+function stats(){['visits','likes'].forEach((k,i)=>fetch(`https://abacus.jasoncameron.dev/get/azizalmalki-site/${k}`,{cache:'no-store'}).then(r=>r.json()).then(d=>$(i?'#nl':'#nv').textContent=Number(d.value||0).toLocaleString('ar')).catch(()=>$(i?'#nl':'#nv').textContent='0'));}
+
+const ED_CSS=`*{animation:none!important;transition:none!important}
+.reveal,.hero h1,.hero p,.hero .meta{opacity:1!important;transform:none!important}
+.top{position:absolute!important}
+[contenteditable],body{caret-color:#B8893C}
+.__sel{outline:2.5px solid #C99A4B!important;outline-offset:3px}
+*:hover{cursor:text}`;
+
+async function load(){
+  status('جاري تحميل الموقع…');
+  const f=await api('index.html');
+  sha=f.sha;
+  let html=b64dec(f.content);
+  html=html.replace(/<head>/i,`<head><base id="__base" href="${SITE}"><style id="__ed">${ED_CSS}</style>`);
+  const fr=$('#fr');
+  fr.onload=()=>{
+    doc=fr.contentDocument; doc.designMode='on';
+    doc.addEventListener('click',e=>{e.preventDefault();pick(e.target);},true);
+    readColors(); status('جاهز. عدّل اللي تبيه ثم اضغط نشر.');
+  };
+  fr.srcdoc=html;
+  pending=[];
+}
+
+// تحديد العناصر
+const BLOCKS='figure,.row,.strip>div,.gal>*,.tl>div,.links>a,a.wa,.like,.meta>span,.about>p,.cap,.head,h1,h2,.hero p,section,footer';
+function pick(t){
+  if(sel) sel.classList.remove('__sel');
+  sel=t.closest(BLOCKS)||t;
+  sel.classList.add('__sel');
+  const n=sel.matches('section')?'قسم كامل':sel.matches('figure,.strip>div')?'بطاقة صورة':sel.matches('.row')?'سطر عمل':sel.matches('.gal>*')?'صورة في المعرض':sel.matches('.links>a,a.wa')?'زر':sel.matches('.tl>div')?'سطر في المسيرة':sel.matches('h1,h2,.head')?'عنوان':'نص';
+  $('#selName').textContent=n;
+  const a=sel.matches('a')?sel:sel.querySelector('a');
+  $('#linkWrap').style.display=a?'block':'none';
+  if(a) $('#link').value=a.getAttribute('href')||'';
+  $('#img').style.display=(sel.querySelector('img,video')||sel.matches('img,video'))?'flex':'none';
+}
+$('#link').addEventListener('input',e=>{const a=sel&&(sel.matches('a')?sel:sel.querySelector('a'));if(a)a.setAttribute('href',e.target.value);});
+$('#del').onclick=()=>{if(!sel)return;if(confirm('تحذف هذا العنصر؟ (تقدر ترجعه بإلغاء التعديلات قبل النشر)')){sel.remove();sel=null;$('#selName').textContent='لا شيء';}};
+$('#dup').onclick=()=>{if(!sel)return;const c=sel.cloneNode(true);sel.after(c);pick(c);};
+$('#up').onclick=()=>{if(sel&&sel.previousElementSibling)sel.previousElementSibling.before(sel);};
+$('#down').onclick=()=>{if(sel&&sel.nextElementSibling)sel.nextElementSibling.after(sel);};
+
+// الصور والفيديو
+$('#img').onclick=()=>$('#file').click();
+$('#file').onchange=e=>{
+  const f=e.target.files[0]; if(!f||!sel)return;
+  const isV=f.type.startsWith('video'); const el=sel.matches('img,video')?sel:sel.querySelector(isV?'video':'img')||sel.querySelector('img,video');
+  if(!el){alert('ما فيه صورة أو فيديو في هذا العنصر');return;}
+  if(f.size>40*1024*1024){alert('الملف أكبر من 40 ميجا، صغّره أول');return;}
+  const ext=(f.name.split('.').pop()||'jpg').toLowerCase().replace(/[^a-z0-9]/g,'');
+  const path=(isV?'media/':'img/')+'up-'+Date.now()+'.'+ext;
+  const r=new FileReader();
+  r.onload=()=>{
+    const id='__p'+pending.length; pending.push({path,data:r.result.split(',')[1],id});
+    el.setAttribute('src',r.result); el.setAttribute('data-pend',id);
+    if(el.tagName==='VIDEO') el.removeAttribute('poster');
+    const btn=el.closest('button[data-src]'); if(btn) btn.setAttribute('data-pend-btn',id);
+    status('الصورة جاهزة، تنرفع لما تضغط نشر');
+  };
+  r.readAsDataURL(f); e.target.value='';
+};
+
+// الألوان
+function readColors(){
+  const css=[...doc.querySelectorAll('style')].map(s=>s.textContent).join('\n');
+  const box=$('#colors'); box.innerHTML=''; colors={};
+  Object.keys(COLOR_NAMES).forEach(k=>{
+    const m=css.match(new RegExp(k+':(#[0-9A-Fa-f]{6})'));
+    if(!m)return; colors[k]={from:m[1],to:m[1]};
+    const row=document.createElement('div'); row.className='color';
+    row.innerHTML=`<span>${COLOR_NAMES[k]}</span><input type="color" value="${m[1]}">`;
+    row.querySelector('input').oninput=e=>{colors[k].to=e.target.value;doc.documentElement.style.setProperty(k,e.target.value);};
+    box.appendChild(row);
+  });
+}
+
+// النشر
+$('#save').onclick=async()=>{
+  if(!doc)return; const b=$('#save'); b.disabled=true;
+  try{
+    for(const p of pending){
+      status('جاري رفع '+p.path+' …');
+      let s; try{s=(await api(p.path)).sha}catch(e){}
+      await api(p.path,{method:'PUT',body:JSON.stringify({message:'رفع ملف من لوحة التحكم',content:p.data,sha:s})});
+    }
+    const root=doc.documentElement.cloneNode(true);
+    root.querySelector('#__ed')?.remove(); root.querySelector('#__base')?.remove();
+    root.removeAttribute('style');
+    root.querySelectorAll('.__sel').forEach(e=>e.classList.remove('__sel'));
+    root.querySelectorAll('[class=""]').forEach(e=>e.removeAttribute('class'));
+    root.querySelectorAll('[data-pend]').forEach(e=>{const p=pending.find(x=>x.id===e.dataset.pend);if(p)e.setAttribute('src',p.path);e.removeAttribute('data-pend');});
+    root.querySelectorAll('[data-pend-btn]').forEach(e=>{const p=pending.find(x=>x.id===e.dataset.pendBtn);if(p)e.setAttribute('data-src',p.path);e.removeAttribute('data-pend-btn');});
+    let html='<!doctype html>\n'+root.outerHTML;
+    for(const k in colors){if(colors[k].to!==colors[k].from) html=html.replace(k+':'+colors[k].from,k+':'+colors[k].to);}
+    status('جاري النشر…');
+    const r=await api('index.html',{method:'PUT',body:JSON.stringify({message:'تعديل من لوحة التحكم',content:b64enc(html),sha})});
+    sha=r.content.sha; pending=[];
+    for(const k in colors) colors[k].from=colors[k].to;
+    status('تم النشر ✓ التعديل يظهر في الموقع خلال دقيقة تقريباً');
+  }catch(e){status('ما تم النشر: '+e.message);}
+  b.disabled=false;
+};
+
+$('#open').onclick=()=>window.open(SITE,'_blank');
+$('#reload').onclick=()=>{if(confirm('تلغي كل التعديلات اللي ما نشرتها؟'))load();};
+$('#vDesk').onclick=()=>{$('#fr').classList.remove('phone');$('#vDesk').classList.add('on');$('#vPhone').classList.remove('on');};
+$('#vPhone').onclick=()=>{$('#fr').classList.add('phone');$('#vPhone').classList.add('on');$('#vDesk').classList.remove('on');};
+$('#logout').onclick=()=>{localStorage.removeItem('gh_token');token='';$('#setup').classList.add('on');};
+$('#tokSave').onclick=async()=>{
+  token=$('#tok').value.trim(); if(!token)return;
+  try{await api('index.html');localStorage.setItem('gh_token',token);$('#setup').classList.remove('on');$('#tok').value='';load();}
+  catch(e){alert('المفتاح ما اشتغل. تأكد إنك اخترت azizalmalki.github.io وصلاحية Contents: Read and write');}
+};
+window.addEventListener('beforeunload',e=>{if(pending.length){e.preventDefault();e.returnValue='';}});
+
+stats();
+if(token) load().catch(e=>{status('خطأ في الربط: '+e.message);$('#setup').classList.add('on');}); else $('#setup').classList.add('on');
 </script>
 </body>
 </html>
