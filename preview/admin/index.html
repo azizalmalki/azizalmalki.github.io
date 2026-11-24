@@ -150,17 +150,27 @@ async function toWebp(file, widths) {
   }
   return out;
 }
+async function toJpeg(file, w) {
+  const img = await createImageBitmap(file), k = Math.min(1, w / img.width), c = document.createElement('canvas');
+  c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
+  c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); return c.toDataURL('image/jpeg', 0.85);
+}
 async function addImage() { // returns data value "img/up-123" (480 + 900 webp)
   const f = await pick('image/*'); if (!f) return '';
   say('تجهيز الصورة…');
   const id = 'img/up-' + Date.now(), set = await toWebp(f, [480, 900]);
+  if (!set[900].startsWith('data:image/webp')) { // browsers without WebP encoding (older Safari): one JPEG
+    const jp = id + '.jpg', url = await toJpeg(f, 1200);
+    uploads.push({ path: BASE + jp, b64: url.split(',')[1] }); preview[jp] = url; touch(); return jp;
+  }
   for (const w of [480, 900]) uploads.push({ path: BASE + `${id}-${w}.webp`, b64: set[w].split(',')[1] });
   preview[id] = set[480]; touch(); return id;
 }
 async function addPoster() {
   const f = await pick('image/*'); if (!f) return '';
-  const id = 'img/up-' + Date.now() + '-poster.webp', set = await toWebp(f, [720]);
-  uploads.push({ path: BASE + id, b64: set[720].split(',')[1] }); preview[id] = set[720]; touch(); return id;
+  const set = await toWebp(f, [720]); const webp = set[720].startsWith('data:image/webp');
+  const id = 'img/up-' + Date.now() + '-poster.' + (webp ? 'webp' : 'jpg'), url = webp ? set[720] : await toJpeg(f, 720);
+  uploads.push({ path: BASE + id, b64: url.split(',')[1] }); preview[id] = url; touch(); return id;
 }
 async function addFile(accept, folder, maxMB) {
   const f = await pick(accept); if (!f) return '';
