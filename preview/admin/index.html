@@ -11,7 +11,6 @@
 @font-face{font-family:"Thmanyah";src:url(../assets/fonts/thmanyah-bold.woff) format("woff");font-weight:600 900}
 :root{--c:#141414;--c2:#1f1e1c;--c3:#2b2926;--line:#3a3732;--iv:#F4F1EA;--mut:#A39D93;--gold:#C4A574;--red:#E8A595;--ok:#9BC59B}
 *{box-sizing:border-box}
-[hidden]{display:none!important}
 body{margin:0;background:var(--c);color:var(--iv);font:15px/1.7 "Thmanyah",system-ui,sans-serif}
 button,input,select,textarea{font:inherit;color:inherit}
 a{color:var(--gold)}
@@ -150,27 +149,17 @@ async function toWebp(file, widths) {
   }
   return out;
 }
-async function toJpeg(file, w) {
-  const img = await createImageBitmap(file), k = Math.min(1, w / img.width), c = document.createElement('canvas');
-  c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
-  c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); return c.toDataURL('image/jpeg', 0.85);
-}
 async function addImage() { // returns data value "img/up-123" (480 + 900 webp)
   const f = await pick('image/*'); if (!f) return '';
   say('تجهيز الصورة…');
   const id = 'img/up-' + Date.now(), set = await toWebp(f, [480, 900]);
-  if (!set[900].startsWith('data:image/webp')) { // browsers without WebP encoding (older Safari): one JPEG
-    const jp = id + '.jpg', url = await toJpeg(f, 1200);
-    uploads.push({ path: BASE + jp, b64: url.split(',')[1] }); preview[jp] = url; touch(); return jp;
-  }
   for (const w of [480, 900]) uploads.push({ path: BASE + `${id}-${w}.webp`, b64: set[w].split(',')[1] });
   preview[id] = set[480]; touch(); return id;
 }
 async function addPoster() {
   const f = await pick('image/*'); if (!f) return '';
-  const set = await toWebp(f, [720]); const webp = set[720].startsWith('data:image/webp');
-  const id = 'img/up-' + Date.now() + '-poster.' + (webp ? 'webp' : 'jpg'), url = webp ? set[720] : await toJpeg(f, 720);
-  uploads.push({ path: BASE + id, b64: url.split(',')[1] }); preview[id] = url; touch(); return id;
+  const id = 'img/up-' + Date.now() + '-poster.webp', set = await toWebp(f, [720]);
+  uploads.push({ path: BASE + id, b64: set[720].split(',')[1] }); preview[id] = set[720]; touch(); return id;
 }
 async function addFile(accept, folder, maxMB) {
   const f = await pick(accept); if (!f) return '';
