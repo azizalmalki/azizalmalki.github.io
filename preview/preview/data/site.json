@@ -1,0 +1,512 @@
+{
+  "profile": {
+    "name": {
+      "ar": "عزيز المالكي",
+      "en": "Aziz Almalki"
+    },
+    "displayName": {
+      "ar": "عـزيـز المالـكي",
+      "en": "Aziz Almalki"
+    },
+    "title": {
+      "ar": "إعلامي ومقدّم برامج وفعاليات",
+      "en": "Media Professional · TV Presenter · Event Host & MC"
+    },
+    "intro": {
+      "ar": "قدّمت على الشاشة برامج اجتماعية وثقافية، ووقفت أمام الجمهور مقدّمًا للفعاليات، وأقود اليوم فريق إعلام وتسويق في قطر.",
+      "en": "I have presented social and cultural programmes on screen and hosted events in front of live audiences, and I currently lead a media and marketing team in Qatar."
+    },
+    "location": {
+      "ar": "الدوحة، قطر",
+      "en": "Doha, Qatar"
+    },
+    "since": {
+      "ar": "أمام الكاميرا منذ 2022",
+      "en": "On camera since 2022"
+    },
+    "portrait": "img/aziz",
+    "showreel": {
+      "video": "",
+      "poster": "",
+      "published": false
+    },
+    "cv": {
+      "file": "",
+      "published": false
+    },
+    "alternateNames": [
+      "Aziz Al Malki",
+      "Aziz Al-Malki",
+      "Aziz Almalki",
+      "عزيز المالكي"
+    ],
+    "nationality": {
+      "ar": "جزائري",
+      "en": "Algerian"
+    },
+    "summary": {
+      "ar": "عزيز المالكي إعلامي ومقدّم برامج وفعاليات جزائري يعمل في قطر. قدّم على التلفزيون برنامج «حديث الشارع» الاجتماعي وبرنامج «أوتاد الخيام» الثقافي، وأسّس مع أصدقائه «لمردة»، برنامجًا أسبوعيًا عن الشعر والحكاية، ويقدّم الفعاليات أمام الجمهور. بدأ أمام الكاميرا في 2022، وعمل في الصحافة، وأشرف خلال دراسته الجامعية على إنتاج فيديوهات. يقود اليوم فريق الإعلام والتسويق في مجموعة صحاري بقطر. يحمل ليسانس في الكتاب والسنة من جامعة وهران 1 أحمد بن بلة، وتلقّى تكوينًا في صناعة المحتوى الرقمي من BBC Media Action.",
+      "en": "Aziz Almalki is an Algerian media professional, TV presenter and event host working in Qatar. On television he presented the social programme Hadith Al-Shari and the cultural programme Awtad Al-Khiyam; he co-founded Lamrda, a weekly programme on poetry and storytelling, and he hosts events in front of live audiences. He started on camera in 2022, has worked in journalism, and supervised video production during his university studies. He currently leads the media and marketing team at Sahari Group in Qatar. He holds a Licence in Quran and Sunnah Studies from the University of Oran 1 Ahmed Ben Bella and trained in digital content creation with BBC Media Action."
+    },
+    "knowsAbout": {
+      "ar": [
+        "التقديم التلفزيوني",
+        "تقديم الفعاليات",
+        "التقديم أمام الكاميرا",
+        "إجراء المقابلات",
+        "الصحافة",
+        "البرامج الاجتماعية والثقافية",
+        "الإنتاج الإعلامي",
+        "صناعة المحتوى الرقمي",
+        "التصوير والمونتاج",
+        "الإعلام والتسويق"
+      ],
+      "en": [
+        "Television presenting",
+        "Event hosting",
+        "On-camera presenting",
+        "Interviewing",
+        "Journalism",
+        "Social and cultural programmes",
+        "Media production",
+        "Digital content creation",
+        "Filming and editing",
+        "Media and marketing"
+      ]
+    }
+  },
+  "contact": {
+    "whatsapp": "97439936975",
+    "email": "a.almalki.media@gmail.com",
+    "instagram": "aziz__almalki",
+    "linkedin": "",
+    "other": [],
+    "youtube": ""
+  },
+  "categories": [
+    {
+      "id": "presenting",
+      "ar": "التقديم التلفزيوني",
+      "en": "TV Presenting",
+      "sectionTitle": {
+        "ar": "التقديم التلفزيوني",
+        "en": "TV Presenting"
+      }
+    },
+    {
+      "id": "events",
+      "ar": "تقديم الفعاليات",
+      "en": "Event Hosting",
+      "sectionTitle": {
+        "ar": "تقديم الفعاليات والمناسبات",
+        "en": "Event Hosting & Master of Ceremonies"
+      }
+    },
+    {
+      "id": "interviews",
+      "ar": "المقابلات والحوارات",
+      "en": "Interviews",
+      "sectionTitle": {
+        "ar": "المقابلات والحوارات",
+        "en": "Interviews & Conversations"
+      }
+    },
+    {
+      "id": "journalism",
+      "ar": "الصحافة والتغطيات",
+      "en": "Journalism",
+      "sectionTitle": {
+        "ar": "الصحافة والتغطيات الإعلامية",
+        "en": "Journalism & Coverage"
+      }
+    },
+    {
+      "id": "production",
+      "ar": "الإنتاج وصناعة المحتوى",
+      "en": "Production",
+      "sectionTitle": {
+        "ar": "الإنتاج الإعلامي وصناعة المحتوى",
+        "en": "Media Production & Content"
+      }
+    },
+    {
+      "id": "marketing",
+      "ar": "الإعلام والتسويق",
+      "en": "Media & Marketing",
+      "sectionTitle": {
+        "ar": "الإعلام والتسويق",
+        "en": "Media & Marketing"
+      }
+    }
+  ],
+  "projects": [
+    {
+      "id": "lamrda",
+      "published": true,
+      "featured": true,
+      "order": 3,
+      "category": "presenting",
+      "onCamera": true,
+      "title": {
+        "ar": "لمردة",
+        "en": "Lamrda"
+      },
+      "type": {
+        "ar": "برنامج أسبوعي",
+        "en": "Weekly programme"
+      },
+      "producer": {
+        "ar": "صفحة مستقلة أسستها مع أصدقائي",
+        "en": "Independent page I co-founded with friends"
+      },
+      "year": "",
+      "role": {
+        "ar": "تأسيس وتقديم",
+        "en": "Co-founder & presenter"
+      },
+      "summary": {
+        "ar": "برنامج أسبوعي عن الشعر والحكاية، يستعيد قصص الشعراء وأخبارهم بأسلوب قريب من المشاهد.",
+        "en": "A weekly programme about poetry and storytelling, revisiting the lives and stories of poets in a style close to the viewer."
+      },
+      "responsibilities": {
+        "ar": [
+          "المشاركة في تأسيس البرنامج",
+          "التقديم أمام الكاميرا"
+        ],
+        "en": [
+          "Co-founding the programme",
+          "On-camera presenting"
+        ]
+      },
+      "tools": [],
+      "cover": "img/scene-poet",
+      "gallery": [
+        "img/scene-elder",
+        "img/scene-sunset",
+        "img/scene-night"
+      ],
+      "videos": [
+        {
+          "src": "/media/ep-farazdaq.mp4",
+          "poster": "img/poster-farazdaq.webp",
+          "title": {
+            "ar": "الفرزدق والنوار",
+            "en": "Al-Farazdaq and Al-Nawar"
+          },
+          "orientation": "vertical",
+          "duration": "PT3M12S",
+          "uploaded": "2026-11-24",
+          "description": {
+            "ar": "",
+            "en": ""
+          },
+          "transcript": {
+            "ar": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "/media/ep-new.mp4",
+          "poster": "img/poster-new.webp",
+          "title": {
+            "ar": "حلقة من لمردة",
+            "en": "A Lamrda episode"
+          },
+          "orientation": "vertical",
+          "duration": "PT1M32S",
+          "uploaded": "2026-11-24",
+          "description": {
+            "ar": "",
+            "en": ""
+          },
+          "transcript": {
+            "ar": "",
+            "en": ""
+          }
+        }
+      ],
+      "link": "",
+      "impact": {
+        "ar": "",
+        "en": ""
+      },
+      "sources": [],
+      "kind": "web"
+    },
+    {
+      "id": "awtad",
+      "published": true,
+      "featured": true,
+      "order": 2,
+      "category": "presenting",
+      "onCamera": true,
+      "title": {
+        "ar": "أوتاد الخيام",
+        "en": "Awtad Al-Khiyam"
+      },
+      "type": {
+        "ar": "برنامج تلفزيوني ثقافي",
+        "en": "Cultural TV programme"
+      },
+      "producer": {
+        "ar": "التلفزيون",
+        "en": "Television"
+      },
+      "year": "2026",
+      "role": {
+        "ar": "تقديم",
+        "en": "Presenter"
+      },
+      "summary": {
+        "ar": "برنامج يعرّف بالثقافة الحسانية: شعرها وعاداتها وحياة الخيمة، كما يرويها أهلها.",
+        "en": "A programme on Hassaniya culture: its poetry, customs and tent life, as told by its own people."
+      },
+      "responsibilities": {
+        "ar": [
+          "التقديم أمام الكاميرا"
+        ],
+        "en": [
+          "On-camera presenting"
+        ]
+      },
+      "tools": [],
+      "cover": "",
+      "gallery": [],
+      "videos": [],
+      "link": "",
+      "impact": {
+        "ar": "",
+        "en": ""
+      },
+      "sources": [],
+      "kind": "tv"
+    },
+    {
+      "id": "hadith",
+      "published": true,
+      "featured": true,
+      "order": 1,
+      "category": "presenting",
+      "onCamera": true,
+      "title": {
+        "ar": "حديث الشارع",
+        "en": "Hadith Al-Shari"
+      },
+      "type": {
+        "ar": "برنامج تلفزيوني اجتماعي",
+        "en": "Social TV programme"
+      },
+      "producer": {
+        "ar": "التلفزيون",
+        "en": "Television"
+      },
+      "year": "2026",
+      "role": {
+        "ar": "تقديم",
+        "en": "Presenter"
+      },
+      "summary": {
+        "ar": "برنامج اجتماعي ينقل أسئلة الناس وآراءهم من الشارع مباشرة.",
+        "en": "A social programme that takes people's questions and opinions straight from the street."
+      },
+      "responsibilities": {
+        "ar": [
+          "التقديم أمام الكاميرا"
+        ],
+        "en": [
+          "On-camera presenting"
+        ]
+      },
+      "tools": [],
+      "cover": "",
+      "gallery": [],
+      "videos": [],
+      "link": "",
+      "impact": {
+        "ar": "",
+        "en": ""
+      },
+      "sources": [],
+      "kind": "tv"
+    }
+  ],
+  "marketing": {
+    "published": true,
+    "role": {
+      "ar": "قائد فريق الإعلام والتسويق",
+      "en": "Media & Marketing Team Lead"
+    },
+    "org": {
+      "ar": "مجموعة صحاري، قطر",
+      "en": "Sahari Group, Qatar"
+    },
+    "since": "2026",
+    "summary": {
+      "ar": "أقود فريق الإعلام والتسويق في مجموعة صحاري: من فكرة المحتوى وتصويره إلى نشره على المنصات، في قطاع متخصص هو الهجن وصحتها.",
+      "en": "I lead the media and marketing team at Sahari Group, taking content from idea and filming through to publishing, in a specialised sector: camels and camel health."
+    },
+    "areas": {
+      "ar": [
+        "إنتاج المحتوى الإعلاني",
+        "الفيديوهات الترويجية",
+        "المقابلات المصورة",
+        "الإعلانات الرقمية",
+        "محتوى الشاشات الإعلانية",
+        "المحتوى المتخصص (البيطري والرياضي والتراثي)",
+        "التخطيط الإعلامي والتسويقي",
+        "قيادة فريق الإعلام"
+      ],
+      "en": [
+        "Advertising content",
+        "Promotional videos",
+        "Filmed interviews",
+        "Digital advertising",
+        "LED screen content",
+        "Specialised content (veterinary, sport, heritage)",
+        "Media and marketing planning",
+        "Leading the media team"
+      ]
+    }
+  },
+  "timeline": [
+    {
+      "year": "2022",
+      "title": {
+        "ar": "البداية أمام الكاميرا",
+        "en": "First steps on camera"
+      },
+      "text": {
+        "ar": "تقديم وصناعة محتوى مستقل.",
+        "en": "Independent presenting and content creation."
+      }
+    },
+    {
+      "year": "2023",
+      "title": {
+        "ar": "التخرج الجامعي",
+        "en": "University degree"
+      },
+      "text": {
+        "ar": "ليسانس في الكتاب والسنة، جامعة وهران 1 أحمد بن بلة.",
+        "en": "Licence in Quran and Sunnah Studies, University of Oran 1 Ahmed Ben Bella."
+      }
+    },
+    {
+      "year": "2026",
+      "title": {
+        "ar": "التلفزيون",
+        "en": "Television"
+      },
+      "text": {
+        "ar": "تقديم «حديث الشارع» و«أوتاد الخيام».",
+        "en": "Presenting Hadith Al-Shari and Awtad Al-Khiyam."
+      }
+    },
+    {
+      "year": "2026",
+      "title": {
+        "ar": "قطر: مجموعة صحاري",
+        "en": "Qatar: Sahari Group"
+      },
+      "text": {
+        "ar": "قائد فريق الإعلام والتسويق.",
+        "en": "Media & Marketing Team Lead."
+      }
+    }
+  ],
+  "education": [
+    {
+      "title": {
+        "ar": "ليسانس في الكتاب والسنة",
+        "en": "Licence in Quran and Sunnah Studies"
+      },
+      "org": {
+        "ar": "جامعة وهران 1 أحمد بن بلة",
+        "en": "University of Oran 1 Ahmed Ben Bella"
+      },
+      "year": "2023",
+      "kind": {
+        "ar": "شهادة جامعية",
+        "en": "Degree"
+      },
+      "credential": "degree"
+    },
+    {
+      "title": {
+        "ar": "صناعة المحتوى الرقمي",
+        "en": "Digital Content Creation"
+      },
+      "org": {
+        "ar": "BBC Media Action",
+        "en": "BBC Media Action"
+      },
+      "year": "",
+      "kind": {
+        "ar": "دورة تدريبية",
+        "en": "Training course"
+      },
+      "credential": "certificate"
+    }
+  ],
+  "about": {
+    "ar": [
+      "بدأت أمام الكاميرا في 2022، ثم أسست مع أصدقائي «لمردة»، برنامجًا أسبوعيًا عن الشعر والحكاية.",
+      "في التلفزيون قدّمت «حديث الشارع» الذي ينقل صوت الناس كما هو، و«أوتاد الخيام» عن الثقافة الحسانية. وعلى المسرح أقف أمام الجمهور مقدّمًا للفعاليات.",
+      "اليوم أعمل في قطر، وأقود فريق الإعلام والتسويق في مجموعة صحاري. أقدّم وأحاور وأكتب وأصوّر وأحرّر، وأبحث عن الفرص التي تجمعني بالجمهور أمام الكاميرا وعلى المسرح."
+    ],
+    "en": [
+      "I started on camera in 2022, then co-founded Lamrda, a weekly programme about poetry and storytelling.",
+      "On television I presented Hadith Al-Shari, which carries people's voices as they are, and Awtad Al-Khiyam, on Hassaniya culture. On stage, I host events in front of live audiences.",
+      "Today I work in Qatar, leading the media and marketing team at Sahari Group. I present, interview, write, film and edit, and I look for work that puts me in front of an audience, on camera and on stage."
+    ]
+  },
+  "collaboration": {
+    "ar": [
+      "تقديم البرامج التلفزيونية",
+      "تقديم الفعاليات والمناسبات",
+      "تقديم المؤتمرات والملتقيات",
+      "تقديم المهرجانات والحفلات الرسمية والثقافية",
+      "إدارة الجلسات الحوارية",
+      "إجراء المقابلات",
+      "التقارير الميدانية",
+      "التقديم أمام الكاميرا للإعلانات والمحتوى الرقمي",
+      "إنتاج المحتوى والتصوير والمونتاج"
+    ],
+    "en": [
+      "TV presenting",
+      "Event hosting and ceremonies",
+      "Conference and forum hosting",
+      "Festivals, official and cultural ceremonies",
+      "Panel moderation",
+      "Interviews",
+      "Field reports",
+      "On-camera talent for commercials and digital content",
+      "Content production, filming and editing"
+    ]
+  },
+  "events": {
+    "published": true,
+    "lead": {
+      "ar": "أقف أمام الجمهور كما أقف أمام الكاميرا: أقدّم الفقرات، وأحافظ على إيقاع المناسبة، وأتواصل مع الحضور بلغة واضحة وحضور هادئ. أرحّب بالتعاون مع منظمي الفعاليات والمؤتمرات والمهرجانات، ومع الجهات الحكومية والخاصة.",
+      "en": "I host in front of a live audience the same way I present on camera: introducing each segment, keeping the event on pace, and connecting with the room in clear, calm Arabic. I welcome work with event organisers, conferences, festivals, and government and private organisations."
+    },
+    "types": {
+      "ar": [
+        "المؤتمرات والملتقيات",
+        "الحفلات الرسمية والثقافية",
+        "المهرجانات",
+        "الجلسات الحوارية والنقاشية",
+        "الفعاليات المؤسسية وإطلاق المنتجات",
+        "المناسبات الرياضية والتراثية"
+      ],
+      "en": [
+        "Conferences and forums",
+        "Official and cultural ceremonies",
+        "Festivals",
+        "Panels and moderated discussions",
+        "Corporate events and launches",
+        "Sports and heritage occasions"
+      ]
+    }
+  }
+}

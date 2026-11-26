@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>إدارة موقع عزيز المالكي</title>
+<link rel="icon" href="../favicon.ico">
+<style>
+@font-face{font-family:"Thmanyah";src:url(../assets/fonts/thmanyah-regular.woff) format("woff");font-weight:300 500}
+@font-face{font-family:"Thmanyah";src:url(../assets/fonts/thmanyah-bold.woff) format("woff");font-weight:600 900}
+:root{--c:#141414;--c2:#1f1e1c;--c3:#2b2926;--line:#3a3732;--iv:#F4F1EA;--mut:#A39D93;--gold:#C4A574;--red:#E8A595;--ok:#9BC59B}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--c);color:var(--iv);font:15px/1.7 "Thmanyah",system-ui,sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--gold)}
+header{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:14px 24px;background:rgba(20,20,20,.96);border-bottom:1px solid var(--line)}
+header h1{margin:0;font-size:19px;font-weight:800;margin-inline-end:auto}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;padding:14px 24px;border-bottom:1px solid var(--line)}
+.tabs button{border:1px solid var(--line);background:none;padding:8px 14px;border-radius:2px;cursor:pointer;color:var(--mut)}
+.tabs button.on{background:var(--iv);color:var(--c);border-color:var(--iv)}
+main{max-width:1100px;margin:0 auto;padding:24px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:8px 16px;border:1px solid var(--line);border-radius:2px;background:none;cursor:pointer;text-decoration:none;color:var(--iv)}
+.btn:hover{border-color:var(--gold)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--c);font-weight:700}
+.btn.red{color:var(--red);border-color:#5a3a33}
+.btn.sm{min-height:32px;padding:4px 10px;font-size:13px}
+.btn[disabled]{opacity:.4;pointer-events:none}
+.status{font-size:13px;color:var(--gold);min-width:120px}
+.card{border:1px solid var(--line);background:var(--c2);padding:18px;margin-bottom:14px}
+.card h2{margin:0 0 12px;font-size:17px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+label{display:block;font-size:13px;color:var(--mut)}
+label input,label select,label textarea{display:block;width:100%;margin-top:4px;padding:9px 11px;background:var(--c);border:1px solid var(--line);border-radius:2px;color:var(--iv)}
+label textarea{min-height:90px;resize:vertical;line-height:1.7}
+label input:focus,label textarea:focus,label select:focus{outline:none;border-color:var(--gold)}
+.en{direction:ltr;text-align:left}
+.chk{display:flex;align-items:center;gap:8px;color:var(--iv);font-size:14px}
+.chk input{width:18px;height:18px;margin:0;accent-color:var(--gold)}
+.row{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--line);background:var(--c2);margin-bottom:8px}
+.row img,.row .ph{width:56px;height:70px;object-fit:cover;background:var(--c3);flex:none}
+.row .t{flex:1;min-width:0}
+.row b{display:block}
+.row small{color:var(--mut)}
+.pill{display:inline-block;font-size:11px;padding:1px 8px;border:1px solid var(--line);margin-inline-start:6px;color:var(--mut)}
+.pill.on{color:var(--c);background:var(--ok);border-color:var(--ok)}
+.pill.ft{color:var(--c);background:var(--gold);border-color:var(--gold)}
+.thumbs{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.thumbs div{position:relative}
+.thumbs img{width:80px;height:100px;object-fit:cover;display:block;background:var(--c3)}
+.thumbs button{position:absolute;top:2px;inset-inline-start:2px;width:24px;height:24px;border:0;background:rgba(0,0,0,.7);color:#fff;cursor:pointer}
+.nums{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.nums div{border:1px solid var(--line);padding:14px;background:var(--c2)}
+.nums b{display:block;font-size:30px;font-weight:900;line-height:1.2}
+.nums span{font-size:13px;color:var(--mut)}
+.hint{font-size:13px;color:var(--mut)}
+.sub{border-top:1px solid var(--line);margin-top:14px;padding-top:14px}
+#setup{max-width:560px;margin:60px auto;padding:28px;border:1px solid var(--line);background:var(--c2)}
+#setup ol{line-height:2}
+dialog{width:min(900px,100%);max-height:92vh;padding:0;border:1px solid var(--line);background:var(--c);color:var(--iv)}
+dialog::backdrop{background:rgba(0,0,0,.7)}
+dialog .hd{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:var(--c);border-bottom:1px solid var(--line);z-index:2}
+dialog .bd{padding:18px}
+</style>
+<script src="../assets/render.js"></script>
+</head>
+<body>
+<header>
+  <h1>إدارة الموقع</h1>
+  <span class="status" id="status" role="status" aria-live="polite"></span>
+  <a class="btn" id="viewSite" href="../" target="_blank" rel="noopener">فتح الموقع</a>
+  <button class="btn gold" id="save" disabled>نشر التعديلات</button>
+</header>
+
+<section id="setup" hidden>
+  <h2 style="margin-top:0">ربط اللوحة بموقعك</h2>
+  <p class="hint">إذا ربطت اللوحة القديمة في هذا المتصفح، فهي مربوطة تلقائيًا. غير كذا:</p>
+  <ol>
+    <li>افتح <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">صفحة إنشاء المفتاح</a></li>
+    <li>الاسم: لوحة الموقع، المدة: أطول مدة</li>
+    <li>Repository access: Only select → azizalmalki.github.io</li>
+    <li>Permissions → Contents: Read and write</li>
+    <li>Generate token، انسخه والصقه هنا</li>
+  </ol>
+  <label>المفتاح<input id="tok" class="en" autocomplete="off" placeholder="github_pat_..."></label>
+  <p><button class="btn gold" id="tokSave">ربط</button></p>
+</section>
+
+<nav class="tabs" id="tabs" hidden>
+  <button data-tab="projects" class="on">الأعمال</button>
+  <button data-tab="profile">البيانات الأساسية</button>
+  <button data-tab="marketing">الإعلام والتسويق</button>
+  <button data-tab="career">المسيرة والشهادات</button>
+  <button data-tab="about">نبذة وتعاون</button>
+  <button data-tab="stats">الإحصائيات</button>
+</nav>
+<main id="main" hidden></main>
+
+<dialog id="dlg"><div class="hd"><b id="dlgTitle"></b><button class="btn sm" id="dlgClose">إغلاق</button></div><div class="bd" id="dlgBody"></div></dialog>
+
+<script>
+(() => {
+'use strict';
+const OWNER = 'azizalmalki', REPO = 'azizalmalki.github.io';
+// the folder this site lives in inside the repository ('' for the live site, 'preview/' for the preview)
+const BASE = location.pathname.replace(/^\//, '').replace(/admin\/?(index\.html)?$/, '');
+const DATA = BASE + 'data/site.json';
+const NS = 'azizalmalki-site';
+const $ = s => document.querySelector(s);
+let token = ''; try { token = localStorage.getItem('gh_token') || ''; } catch (e) {}
+let D = null, sha = null, dirty = false, tab = 'projects';
+const uploads = []; // {path, b64}
+const say = t => $('#status').textContent = t;
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const touch = () => { dirty = true; $('#save').disabled = false; say('فيه تعديلات ما انتشرت'); };
+const thumb = p => !p ? '' : /^(data:|https?:|\/)/.test(p) ? p : /\.\w{3,4}$/.test(p) ? '../' + p : '../' + p + (p === 'img/aziz' ? '-480.webp' : '-480.webp');
+const preview = {}; // path -> dataURL for not-yet-published uploads
+const src = p => preview[p] || thumb(p);
+
+async function api(path, opt = {}) {
+  const r = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`, { ...opt, cache: 'no-store', headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' } });
+  if (!r.ok) throw new Error(r.status + ' ' + (await r.text()).slice(0, 140));
+  return r.json();
+}
+const dec = s => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\n/g, '')), c => c.charCodeAt(0)));
+const enc = str => { const b = new TextEncoder().encode(str); let s = ''; for (let i = 0; i < b.length; i += 0x8000) s += String.fromCharCode.apply(null, b.subarray(i, i + 0x8000)); return btoa(s); };
+
+async function load() {
+  say('جاري التحميل…');
+  const f = await api(DATA);
+  sha = f.sha; D = JSON.parse(dec(f.content));
+  $('#setup').hidden = true; $('#tabs').hidden = false; $('#main').hidden = false;
+  dirty = false; $('#save').disabled = true; say('جاهز');
+  draw();
+}
+
+/* ---------- uploads ---------- */
+const pick = accept => new Promise(res => { const i = document.createElement('input'); i.type = 'file'; i.accept = accept; i.onchange = () => res(i.files[0]); i.click(); });
+const readURL = f => new Promise(r => { const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(f); });
+async function toWebp(file, widths) {
+  const img = await createImageBitmap(file);
+  const out = {};
+  for (const w of widths) {
+    const s = Math.min(1, w / img.width), c = document.createElement('canvas');
+    c.width = Math.round(img.width * s); c.height = Math.round(img.height * s);
+    c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+    out[w] = c.toDataURL('image/webp', 0.82);
+  }
+  return out;
+}
+async function toJpeg(file, w) {
+  const img = await createImageBitmap(file), k = Math.min(1, w / img.width), c = document.createElement('canvas');
+  c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
+  c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); return c.toDataURL('image/jpeg', 0.85);
+}
+async function addImage() { // returns data value "img/up-123" (480 + 900 webp)
+  const f = await pick('image/*'); if (!f) return '';
+  say('تجهيز الصورة…');
+  const id = 'img/up-' + Date.now(), set = await toWebp(f, [480, 900]);
+  if (!set[900].startsWith('data:image/webp')) { // browsers without WebP encoding (older Safari): one JPEG
+    const jp = id + '.jpg', url = await toJpeg(f, 1200);
+    uploads.push({ path: BASE + jp, b64: url.split(',')[1] }); preview[jp] = url; touch(); return jp;
+  }
+  for (const w of [480, 900]) uploads.push({ path: BASE + `${id}-${w}.webp`, b64: set[w].split(',')[1] });
+  preview[id] = set[480]; touch(); return id;
+}
+async function addPoster() {
+  const f = await pick('image/*'); if (!f) return '';
+  const set = await toWebp(f, [720]); const webp = set[720].startsWith('data:image/webp');
+  const id = 'img/up-' + Date.now() + '-poster.' + (webp ? 'webp' : 'jpg'), url = webp ? set[720] : await toJpeg(f, 720);
+  uploads.push({ path: BASE + id, b64: url.split(',')[1] }); preview[id] = url; touch(); return id;
+}
+async function addFile(accept, folder, maxMB) {
+  const f = await pick(accept); if (!f) return '';
+  if (f.size > maxMB * 1024 * 1024) { alert(`الملف أكبر من ${maxMB} ميجا. صغّره ثم جرّب مرة ثانية.`); return ''; }
+  const ext = (f.name.split('.').pop() || 'bin').toLowerCase().replace(/[^a-z0-9]/g, '');
+  const name = folder + 'up-' + Date.now() + '.' + ext;
+  const u = await readURL(f); uploads.push({ path: name, b64: u.split(',')[1] }); touch();
+  return name;
+}
+
+/* ---------- small form helpers ---------- */
+const bi = (o, key, label, area) => {
+  o[key] = o[key] || { ar: '', en: '' };
+  const tag = area ? 'textarea' : 'input';
+  return `<div class="grid2"><label>${label} (عربي)<${tag} data-bind="${key}.ar">${area ? esc(o[key].ar) + '</textarea>' : ''}</label><label class="en">${label} (English)<${tag} class="en" data-bind="${key}.en">${area ? esc(o[key].en) + '</textarea>' : ''}</label></div>`;
+};
+function bind(root, obj) {
+  root.querySelectorAll('[data-bind]').forEach(el => {
+    if (el.dataset.bound) return; el.dataset.bound = '1';
+    const path = el.dataset.bind.split('.');
+    let t = obj; for (let i = 0; i < path.length - 1; i++) t = t[path[i]] = t[path[i]] || {};
+    const k = path[path.length - 1], lines = el.dataset.lines !== undefined;
+    const v = t[k];
+    if (el.type === 'checkbox') el.checked = !!v;
+    else if (el.tagName !== 'TEXTAREA' || lines) el.value = lines ? (v || []).join('\n') : (v ?? '');
+    el.addEventListener(el.type === 'checkbox' || el.tagName === 'SELECT' ? 'change' : 'input', () => {
+      t[k] = el.type === 'checkbox' ? el.checked : lines ? el.value.split('\n').map(s => s.trim()).filter(Boolean) : el.value;
+      touch();
+    });
+  });
+}
+const lines = (key, label, en) => `<label${en ? ' class="en"' : ''}>${label}<textarea data-lines data-bind="${key}"${en ? ' class="en"' : ''}></textarea></label>`;
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('[data-tab]').forEach(b => b.onclick = () => { tab = b.dataset.tab; document.querySelectorAll('[data-tab]').forEach(x => x.classList.toggle('on', x === b)); draw(); });
+function draw() { ({ projects, profile, marketing, career, about, stats })[tab](); }
+
+function projects() {
+  const ps = D.projects.slice().sort((a, b) => (a.order || 99) - (b.order || 99));
+  $('#main').innerHTML = `<p class="hint">رتّب الأعمال بالأسهم. «منشور» يظهر للزوار، و«مميز» يظهر في «أعمال مختارة». أي عمل غير منشور يختفي من الموقع تلقائيًا.</p>
+    <p><button class="btn gold" id="newP">+ إضافة عمل جديد</button></p>
+    ${ps.map((p, i) => `<div class="row">${p.cover ? `<img src="${esc(src(p.cover))}" alt="">` : '<span class="ph"></span>'}
+      <div class="t"><b>${esc(p.title?.ar || '(بدون عنوان)')}<span class="pill ${p.published ? 'on' : ''}">${p.published ? 'منشور' : 'مخفي'}</span>${p.featured ? '<span class="pill ft">مميز</span>' : ''}</b>
+      <small>${esc([p.type?.ar, p.role?.ar, p.year].filter(Boolean).join(' · '))}</small></div>
+      <button class="btn sm" data-up="${i}" aria-label="لفوق">↑</button><button class="btn sm" data-down="${i}" aria-label="لتحت">↓</button>
+      <button class="btn sm" data-edit="${esc(p.id)}">تعديل</button></div>`).join('')}`;
+  const reorder = (i, d) => { const j = i + d; if (j < 0 || j >= ps.length) return; [ps[i], ps[j]] = [ps[j], ps[i]]; ps.forEach((p, k) => p.order = k + 1); touch(); projects(); };
+  document.querySelectorAll('[data-up]').forEach(b => b.onclick = () => reorder(+b.dataset.up, -1));
+  document.querySelectorAll('[data-down]').forEach(b => b.onclick = () => reorder(+b.dataset.down, 1));
+  document.querySelectorAll('[data-edit]').forEach(b => b.onclick = () => editProject(D.projects.find(p => p.id === b.dataset.edit)));
+  $('#newP').onclick = () => {
+    const p = { id: 'p' + Date.now(), published: false, featured: false, order: D.projects.length + 1, category: 'presenting', onCamera: false, title: { ar: '', en: '' }, type: { ar: '', en: '' }, producer: { ar: '', en: '' }, year: '', role: { ar: '', en: '' }, summary: { ar: '', en: '' }, responsibilities: { ar: [], en: [] }, tools: [], cover: '', gallery: [], videos: [], link: '', impact: { ar: '', en: '' }, kind: 'tv', date: '', venue: { ar: '', en: '' }, sources: [] };
+    D.projects.push(p); touch(); editProject(p);
+  };
+}
+
+function editProject(p) {
+  const cats = D.categories.map(c => `<option value="${c.id}">${esc(c.ar)}</option>`).join('');
+  $('#dlgTitle').textContent = p.title.ar || 'عمل جديد';
+  $('#dlgBody').innerHTML = `
+    <div class="card"><div class="grid3">
+      <label class="chk"><input type="checkbox" data-bind="published"> منشور للزوار</label>
+      <label class="chk"><input type="checkbox" data-bind="featured"> مميز (أعمال مختارة)</label>
+      <label class="chk"><input type="checkbox" data-bind="onCamera"> أمام الكاميرا</label></div>
+      <p class="hint" style="margin:8px 0 0">العمل ما يظهر للزوار إلا إذا كان «منشور» وله عنوان.</p></div>
+    <div class="card"><h2>المعلومات</h2>
+      ${bi(p, 'title', 'اسم العمل')}${bi(p, 'type', 'نوع العمل')}${bi(p, 'producer', 'الجهة المنتجة')}${bi(p, 'role', 'دوري')}
+      <div class="grid3"><label>السنة<input data-bind="year" class="en"></label><label>القسم في الموقع<select data-bind="category">${cats}</select></label><label>رابط مشاهدة كامل (اختياري)<input data-bind="link" class="en" placeholder="https://"></label></div>
+      <div class="grid3"><label>طبيعة العمل (لمحركات البحث)<select data-bind="kind"><option value="tv">برنامج تلفزيوني</option><option value="web">برنامج على المنصات الرقمية</option><option value="event">فعالية أو مناسبة</option><option value="other">عمل آخر</option></select></label>
+      <label>التاريخ الدقيق (اختياري)<input type="date" data-bind="date" class="en"></label><div></div></div>
+      ${bi(p, 'venue', 'مكان الفعالية (للفعاليات فقط)')}
+      ${bi(p, 'summary', 'وصف مختصر', true)}
+      <div class="grid2">${lines('responsibilities.ar', 'المسؤوليات (كل سطر مسؤولية)')}${lines('responsibilities.en', 'Responsibilities (one per line)', true)}</div>
+      ${bi(p, 'impact', 'الأثر أو النتيجة (اختياري، فقط إذا كان موثقًا)', true)}
+      <label>الأدوات (افصل بفاصلة، اختياري)<input data-tools class="en" value="${esc((p.tools || []).join(', '))}"></label>
+      <label>مصادر خارجية تثبت العمل (كل سطر: الرابط ثم مسافة ثم الوصف، مثل رابط الحلقة على يوتيوب أو خبر عن الفعالية)<textarea data-sources class="en">${esc((p.sources || []).map(x => (x.url || '') + ' ' + ((x.label && x.label.ar) || '')).join('\n'))}</textarea></label></div>
+    <div class="card"><h2>صورة الغلاف</h2><div class="thumbs" id="cov">${p.cover ? `<div><img src="${esc(src(p.cover))}" alt=""><button data-rmcov aria-label="حذف">×</button></div>` : ''}</div>
+      <p><button class="btn sm" id="setCov">${p.cover ? 'تغيير الغلاف' : 'إضافة غلاف'}</button></p></div>
+    <div class="card"><h2>صور العمل</h2><div class="thumbs" id="gal">${(p.gallery || []).map((g, i) => `<div><img src="${esc(src(g))}" alt=""><button data-rmg="${i}" aria-label="حذف">×</button></div>`).join('')}</div>
+      <p><button class="btn sm" id="addG">+ إضافة صورة</button></p></div>
+    <div class="card"><h2>الفيديوهات</h2>${(p.videos || []).map((v, i) => `<div class="sub">
+        <div class="grid2"><label>عنوان الفيديو (عربي)<input data-v="${i}" data-k="ar" value="${esc(v.title?.ar)}"></label><label class="en">Video title (English)<input class="en" data-v="${i}" data-k="en" value="${esc(v.title?.en)}"></label></div>
+        <div class="grid2"><label>وصف الفيديو (عربي)<textarea data-vd="${i}" data-k="ar">${esc(v.description?.ar)}</textarea></label><label class="en">Video description (English)<textarea class="en" data-vd="${i}" data-k="en">${esc(v.description?.en)}</textarea></label></div>
+        <div class="grid3"><label>المدة (دقائق:ثواني)<input class="en" data-vdur="${i}" value="${esc((/PT(?:(\d+)M)?(?:(\d+)S)?/.exec(v.duration || '') || []).slice(1).map((x, j) => j ? String(+x || 0).padStart(2, '0') : (+x || 0)).join(':'))}" placeholder="3:12"></label><label>تاريخ نشر الحلقة الأصلي<input type="date" class="en" data-vup="${i}" value="${esc(v.uploaded || '')}"></label><div></div></div>
+        <label>النص المكتوب للحلقة (اختياري: انسخ كلامها كما هو، ويظهر تحت الفيديو)<textarea data-vt="${i}" style="min-height:90px">${esc(v.transcript?.ar)}</textarea></label>
+        <div class="grid3"><label>الملف<input class="en" value="${esc(v.src)}" readonly></label>
+        <label>الاتجاه<select data-o="${i}"><option value="vertical"${v.orientation !== 'horizontal' ? ' selected' : ''}>عمودي</option><option value="horizontal"${v.orientation === 'horizontal' ? ' selected' : ''}>أفقي</option></select></label>
+        <div style="display:flex;gap:8px;align-items:end"><button class="btn sm" data-poster="${i}">${v.poster ? 'تغيير الغلاف' : 'إضافة غلاف'}</button><button class="btn sm red" data-rmv="${i}">حذف</button></div></div></div>`).join('')}
+      <p><button class="btn sm" id="addV">+ رفع فيديو MP4</button> <span class="hint">حتى 45 ميجا. للفيديوهات الأكبر صغّرها أولًا.</span></p></div>
+    <p style="display:flex;justify-content:space-between"><button class="btn red" id="delP">حذف العمل نهائيًا</button><button class="btn gold" id="done">تم</button></p>`;
+  const body = $('#dlgBody');
+  bind(body, p);
+  body.querySelector('[data-tools]').addEventListener('input', e => { p.tools = e.target.value.split(',').map(s => s.trim()).filter(Boolean); touch(); });
+  body.querySelector('[data-sources]').addEventListener('input', e => { p.sources = e.target.value.split('\n').map(l => l.trim()).filter(l => /^https?:\/\//.test(l)).map(l => { const i = l.indexOf(' '); const u = i < 0 ? l : l.slice(0, i), t = i < 0 ? '' : l.slice(i + 1).trim(); return { url: u, label: { ar: t, en: t } }; }); touch(); });
+  const again = () => editProject(p);
+  $('#setCov').onclick = async () => { const id = await addImage(); if (id) { p.cover = id; again(); } };
+  const rc = body.querySelector('[data-rmcov]'); if (rc) rc.onclick = () => { p.cover = ''; touch(); again(); };
+  $('#addG').onclick = async () => { const id = await addImage(); if (id) { (p.gallery = p.gallery || []).push(id); again(); } };
+  body.querySelectorAll('[data-rmg]').forEach(b => b.onclick = () => { p.gallery.splice(+b.dataset.rmg, 1); touch(); again(); });
+  $('#addV').onclick = async () => { const f = await addFile('video/mp4', 'media/', 45); if (f) { (p.videos = p.videos || []).push({ src: '/' + f, poster: '', title: { ar: '', en: '' }, description: { ar: '', en: '' }, transcript: { ar: '', en: '' }, orientation: 'vertical', uploaded: '' }); again(); } };
+  body.querySelectorAll('[data-v]').forEach(i => i.oninput = () => { p.videos[+i.dataset.v].title[i.dataset.k] = i.value; touch(); });
+  body.querySelectorAll('[data-o]').forEach(s => s.onchange = () => { p.videos[+s.dataset.o].orientation = s.value; touch(); });
+  body.querySelectorAll('[data-vd]').forEach(i => i.oninput = () => { const v = p.videos[+i.dataset.vd]; v.description = v.description || { ar: '', en: '' }; v.description[i.dataset.k] = i.value; touch(); });
+  body.querySelectorAll('[data-vt]').forEach(i => i.oninput = () => { const v = p.videos[+i.dataset.vt]; v.transcript = { ar: i.value, en: (v.transcript && v.transcript.en) || '' }; touch(); });
+  body.querySelectorAll('[data-vup]').forEach(i => i.oninput = () => { p.videos[+i.dataset.vup].uploaded = i.value; touch(); });
+  body.querySelectorAll('[data-vdur]').forEach(i => i.oninput = () => { const m = /^(\d+):(\d{1,2})$/.exec(i.value.trim()); if (m) { p.videos[+i.dataset.vdur].duration = `PT${+m[1]}M${+m[2]}S`; touch(); } });
+  body.querySelectorAll('[data-poster]').forEach(b => b.onclick = async () => { const id = await addPoster(); if (id) { p.videos[+b.dataset.poster].poster = id; again(); } });
+  body.querySelectorAll('[data-rmv]').forEach(b => b.onclick = () => { if (confirm('تحذف هذا الفيديو من العمل؟')) { p.videos.splice(+b.dataset.rmv, 1); touch(); again(); } });
+  $('#delP').onclick = () => { if (confirm('تحذف هذا العمل نهائيًا من الموقع؟ إذا تبي تخفيه بس، شيل علامة «منشور».')) { D.projects = D.projects.filter(x => x !== p); touch(); $('#dlg').close(); } };
+  $('#done').onclick = () => $('#dlg').close();
+  if (!$('#dlg').open) $('#dlg').showModal();
+}
+$('#dlgClose').onclick = () => $('#dlg').close();
+$('#dlg').addEventListener('close', () => { if (tab === 'projects') projects(); });
+
+function profile() {
+  const P = D.profile, C = D.contact;
+  $('#main').innerHTML = `
+    <div class="card"><h2>التعريف</h2>${bi(P, 'title', 'الصفة المهنية')}${bi(P, 'intro', 'النص التعريفي في الواجهة', true)}${bi(P, 'location', 'المدينة')}${bi(P, 'since', 'سطر الخبرة')}
+      ${bi(P, 'summary', 'النبذة المختصرة (بصيغة الغائب، تظهر في صفحة «عن عزيز المالكي» وتقرؤها محركات البحث)', true)}
+      <div class="grid2">${lines('knowsAbout.ar', 'مجالات الخبرة (كل سطر مجال، فقط اللي مارسته فعلًا)')}${lines('knowsAbout.en', 'Areas of expertise (one per line)', true)}</div>
+      <p class="hint">صورة المعاينة عند مشاركة الرابط (واتساب ولينكدإن) صورة ثابتة؛ إذا غيّرت الصفة المهنية، أخبرني أحدّثها.</p></div>
+    <div class="card"><h2>الفيديو التعريفي (Showreel)</h2>
+      <label class="chk"><input type="checkbox" data-bind="showreel.published"> إظهار زر الفيديو التعريفي</label>
+      <p class="hint">الملف الحالي: <span class="en">${esc(P.showreel.video || 'لا يوجد')}</span>. الزر ما يظهر إلا إذا فيه ملف وعلامة الإظهار.</p>
+      <p><button class="btn sm" id="reelUp">رفع الفيديو التعريفي (MP4)</button> <button class="btn sm" id="reelPoster">غلاف الفيديو</button></p></div>
+    <div class="card"><h2>السيرة الذاتية</h2>
+      <label class="chk"><input type="checkbox" data-bind="cv.published"> إظهار زر تحميل السيرة الذاتية</label>
+      <p class="hint">الملف الحالي: <span class="en">${esc(P.cv.file || 'لا يوجد')}</span></p>
+      <p><button class="btn sm" id="cvUp">رفع السيرة الذاتية (PDF)</button></p></div>
+    <div class="card" id="cc"><h2>التواصل</h2><div class="grid2">
+      <label>واتساب (الرقم مع رمز الدولة بدون +)<input class="en" data-bind="whatsapp"></label>
+      <label>البريد الإلكتروني<input class="en" data-bind="email"></label>
+      <label>إنستغرام (اسم المستخدم فقط)<input class="en" data-bind="instagram"></label>
+      <label>رابط لينكدإن الكامل<input class="en" data-bind="linkedin" placeholder="https://www.linkedin.com/in/..."></label>
+      <label>رابط قناة يوتيوب (اختياري)<input class="en" data-bind="youtube" placeholder="https://www.youtube.com/@..."></label></div>
+      <p class="hint">أي خانة فاضية، زرها ما يظهر في الموقع.</p></div>
+    <div class="card" id="vf"><h2>إثبات ملكية الموقع (Google وBing)</h2><div class="grid2">
+      <label>Google Search Console (قيمة content فقط)<input class="en" data-bind="google"></label>
+      <label>Bing Webmaster Tools (قيمة content فقط)<input class="en" data-bind="bing"></label></div>
+      <p class="hint">من Search Console اختر طريقة «HTML tag» وانسخ الرمز اللي داخل content="…" فقط، ثم انشر.</p>
+      </div>`;
+  D.verify = D.verify || { google: '', bing: '' };
+  bind($('#cc'), C); bind($('#vf'), D.verify); bind($('#main'), P);
+  $('#reelUp').onclick = async () => { const f = await addFile('video/mp4', 'media/', 45); if (f) { P.showreel.video = '/' + f; profile(); } };
+  $('#reelPoster').onclick = async () => { const id = await addPoster(); if (id) { P.showreel.poster = id; profile(); } };
+  $('#cvUp').onclick = async () => { const f = await addFile('application/pdf', BASE + 'files/', 10); if (f) { P.cv.file = f.slice(BASE.length); profile(); } };
+}
+
+function marketing() {
+  const M = D.marketing;
+  $('#main').innerHTML = `<div class="card"><label class="chk"><input type="checkbox" data-bind="published"> إظهار القسم</label>
+    ${bi(M, 'role', 'المسمى')}${bi(M, 'org', 'الجهة')}<label>منذ سنة<input class="en" data-bind="since"></label>${bi(M, 'summary', 'وصف مختصر', true)}
+    <div class="grid2">${lines('areas.ar', 'مجالات العمل (كل سطر مجال)')}${lines('areas.en', 'Areas (one per line)', true)}</div>
+    <p class="hint">لا تضع هنا أي معلومات داخلية أو أسماء عملاء.</p></div>`;
+  bind($('#main'), M);
+}
+
+function career() {
+  const row = (x, i, kind) => `<div class="card" data-i="${i}"><div class="grid3"><label>السنة<input class="en" data-bind="year"></label></div>
+    ${bi(x, 'title', 'العنوان')}${kind === 'tl' ? bi(x, 'text', 'سطر وصف') : bi(x, 'org', 'الجهة') + bi(x, 'kind', 'النوع (شهادة جامعية، دورة…)')}
+    <button class="btn sm red" data-rm="${kind}:${i}">حذف</button></div>`;
+  $('#main').innerHTML = `<h2>المسيرة المهنية</h2><div id="tl">${D.timeline.map((x, i) => row(x, i, 'tl')).join('')}</div><p><button class="btn sm" id="addTl">+ إضافة محطة</button></p>
+    <h2 style="margin-top:30px">الشهادات والتكوين</h2><div id="ed">${D.education.map((x, i) => row(x, i, 'ed')).join('')}</div><p><button class="btn sm" id="addEd">+ إضافة شهادة</button></p>`;
+  document.querySelectorAll('#tl .card').forEach(c => bind(c, D.timeline[+c.dataset.i]));
+  document.querySelectorAll('#ed .card').forEach(c => bind(c, D.education[+c.dataset.i]));
+  document.querySelectorAll('[data-rm]').forEach(b => b.onclick = () => { const [k, i] = b.dataset.rm.split(':'); (k === 'tl' ? D.timeline : D.education).splice(+i, 1); touch(); career(); });
+  $('#addTl').onclick = () => { D.timeline.push({ year: '', title: { ar: '', en: '' }, text: { ar: '', en: '' } }); touch(); career(); };
+  $('#addEd').onclick = () => { D.education.push({ year: '', title: { ar: '', en: '' }, org: { ar: '', en: '' }, kind: { ar: '', en: '' } }); touch(); career(); };
+}
+
+function about() {
+  $('#main').innerHTML = `<div class="card" id="ab"><h2>نبذة عني</h2><p class="hint">كل سطر فقرة.</p><div class="grid2">${lines('ar', 'بالعربي')}${lines('en', 'In English', true)}</div></div>
+    <div class="card" id="co"><h2>مجالات التعاون</h2><div class="grid2">${lines('ar', 'بالعربي (كل سطر مجال)')}${lines('en', 'In English (one per line)', true)}</div></div>`;
+  bind($('#ab'), D.about); bind($('#co'), D.collaboration);
+  D.events = D.events || { published: true, lead: { ar: '', en: '' }, types: { ar: [], en: [] } };
+  const ev = document.createElement('div'); ev.className = 'card'; ev.id = 'ev';
+  ev.innerHTML = `<h2>قسم تقديم الفعاليات</h2><p class="hint">النص التعريفي للقسم، وأنواع الفعاليات المتاح تقديمها. الفعاليات نفسها تضيفها من «الأعمال» بقسم «تقديم الفعاليات».</p>
+    <label class="chk"><input type="checkbox" data-bind="published"> إظهار القسم</label>
+    <div class="grid2"><label>النص بالعربي<textarea data-k="ar" rows="4"></textarea></label><label>In English<textarea data-k="en" rows="4" dir="ltr"></textarea></label></div>
+    <div class="grid2" id="evt">${lines('ar', 'أنواع الفعاليات بالعربي (كل سطر نوع)')}${lines('en', 'Event types in English (one per line)', true)}</div>`;
+  $('#main').appendChild(ev);
+  bind($('#evt'), D.events.types); bind(ev, D.events);
+  ev.querySelectorAll('textarea[data-k]').forEach(t => { t.value = D.events.lead[t.dataset.k] || ''; t.addEventListener('input', () => { D.events.lead[t.dataset.k] = t.value; touch(); }); });
+}
+
+async function stats() {
+  const keys = [['visits', 'الزيارات'], ['likes', 'الإعجابات'], ['contact_whatsapp', 'ضغطات واتساب'], ['contact_email', 'ضغطات البريد'], ['contact_instagram', 'ضغطات إنستغرام'], ['contact_linkedin', 'ضغطات لينكدإن'], ['cv_download', 'تحميل السيرة الذاتية'], ['showreel_play', 'تشغيل الفيديو التعريفي'],
+    ...D.projects.map(p => ['project_' + p.id, 'مشاهدة: ' + (p.title.ar || p.id)])];
+  $('#main').innerHTML = `<p class="hint">أرقام تقريبية ومجهولة الهوية، لك أنت بس. ما يطلع منها شي للزوار.</p><div class="nums">${keys.map(([k, t]) => `<div><b data-k="${k}">…</b><span>${esc(t)}</span></div>`).join('')}</div>
+    <div class="card" style="margin-top:20px"><h2>الدول والأجهزة ومصادر الزيارات</h2><p class="hint">هذي تحتاج أداة تحليل مجانية بحساب خاص (أنصح بـ GoatCounter لأنها ما تستخدم كوكيز). إذا تبيها، سوِّ حساب وأرسل لي اسمه وأربطها.</p></div>`;
+  for (const [k] of keys) fetch(`https://abacus.jasoncameron.dev/get/${NS}/${k}`, { cache: 'no-store' }).then(r => r.ok ? r.json() : { value: 0 }).then(d => { const el = document.querySelector(`[data-k="${k}"]`); if (el) el.textContent = Number(d.value || 0).toLocaleString('ar'); }).catch(() => {});
+}
+
+/* ---------- publish: one commit with the data, the uploads and every rebuilt page ---------- */
+async function gh(path, opt = {}) {
+  const r = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/${path}`, { ...opt, cache: 'no-store', headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' } });
+  if (!r.ok) throw new Error(r.status + ' ' + (await r.text()).slice(0, 140));
+  return r.json();
+}
+$('#save').onclick = async () => {
+  const b = $('#save'); b.disabled = true;
+  try {
+    say('التأكد من آخر نسخة…');
+    const now = await api(DATA);
+    if (now.sha !== sha) throw new Error('409 does not match');
+    const ref = await gh('git/ref/heads/main'), head = ref.object.sha;
+    const base = (await gh('git/commits/' + head)).tree.sha;
+    const tree = [];
+    for (let i = 0; i < uploads.length; i++) {
+      say(`رفع ${i + 1} من ${uploads.length}…`);
+      const bl = await gh('git/blobs', { method: 'POST', body: JSON.stringify({ content: uploads[i].b64, encoding: 'base64' }) });
+      tree.push({ path: uploads[i].path, mode: '100644', type: 'blob', sha: bl.sha });
+    }
+    say('بناء الصفحات…');
+    const json = JSON.stringify(D, null, 2) + '\n';
+    tree.push({ path: DATA, mode: '100644', type: 'blob', content: json });
+    const files = window.Render.site(D, { preview: BASE === 'preview/' });
+    for (const [f, body] of Object.entries(files)) tree.push({ path: BASE + f, mode: '100644', type: 'blob', content: body });
+    // pages of works that were unpublished or deleted are removed, so no stale page stays online
+    const old = await gh('git/trees/' + base + '?recursive=1');
+    const keep = new Set(Object.keys(files).map(f => BASE + f));
+    const workRe = new RegExp('^' + BASE.replace(/\//g, '\\/') + '(en\\/)?work\\/[^/]+\\/index\\.html$');
+    (old.tree || []).forEach(x => { if (x.type === 'blob' && workRe.test(x.path) && !keep.has(x.path)) tree.push({ path: x.path, mode: '100644', type: 'blob', sha: null }); });
+    say('النشر…');
+    const t = await gh('git/trees', { method: 'POST', body: JSON.stringify({ base_tree: base, tree }) });
+    const c = await gh('git/commits', { method: 'POST', body: JSON.stringify({ message: 'تحديث الموقع من لوحة الإدارة', tree: t.sha, parents: [head] }) });
+    await gh('git/refs/heads/main', { method: 'PATCH', body: JSON.stringify({ sha: c.sha }) });
+    uploads.length = 0;
+    sha = (await api(DATA)).sha; dirty = false;
+    say('تم النشر ✓ يظهر في الموقع خلال دقيقة أو دقيقتين');
+  } catch (e) {
+    b.disabled = false;
+    say(/409|does not match|422/.test(e.message) ? 'فيه نسخة أحدث، حدّث الصفحة وأعد التعديل' : 'ما تم النشر: ' + e.message);
+  }
+};
+addEventListener('beforeunload', e => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
+
+/* ---------- auth ---------- */
+$('#tokSave').onclick = async () => {
+  token = $('#tok').value.trim(); if (!token) return;
+  try { await load(); try { localStorage.setItem('gh_token', token); } catch (e) {} $('#tok').value = ''; }
+  catch (e) { alert('المفتاح ما اشتغل. تأكد من الصلاحية Contents: Read and write على azizalmalki.github.io'); }
+};
+if (token) load().catch(() => { $('#setup').hidden = false; say(''); }); else $('#setup').hidden = false;
+})();
+</script>
+</body>
+</html>

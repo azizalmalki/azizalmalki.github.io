@@ -1,0 +1,19 @@
+# Aziz Almalki (عزيز المالكي)
+
+> Aziz Almalki is an Algerian media professional, TV presenter and event host working in Qatar. On television he presented the social programme Hadith Al-Shari and the cultural programme Awtad Al-Khiyam; he co-founded Lamrda, a weekly programme on poetry and storytelling, and he hosts events in front of live audiences. He started on camera in 2022, has worked in journalism, and supervised video production during his university studies. He currently leads the media and marketing team at Sahari Group in Qatar. He holds a Licence in Quran and Sunnah Studies from the University of Oran 1 Ahmed Ben Bella and trained in digital content creation with BBC Media Action.
+
+Official personal website of Aziz Almalki. Every page exists in Arabic (default) and English. The facts on this site are maintained by Aziz Almalki himself.
+
+## Profile
+- [About Aziz Almalki](https://azizalmalki.github.io/en/about/): biography, programmes, career, education and contact
+- [عن عزيز المالكي](https://azizalmalki.github.io/about/): النبذة باللغة العربية
+- [Home](https://azizalmalki.github.io/en/) · [الرئيسية](https://azizalmalki.github.io/)
+
+## Works
+- [Hadith Al-Shari (حديث الشارع)](https://azizalmalki.github.io/en/work/hadith/): Social TV programme, Presenter, 2026
+- [Awtad Al-Khiyam (أوتاد الخيام)](https://azizalmalki.github.io/en/work/awtad/): Cultural TV programme, Presenter, 2026
+- [Lamrda (لمردة)](https://azizalmalki.github.io/en/work/lamrda/): Weekly programme, Co-founder & presenter
+
+## Contact
+- Email: a.almalki.media@gmail.com
+- Instagram: https://www.instagram.com/aziz__almalki/
